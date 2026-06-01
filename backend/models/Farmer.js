@@ -1,4 +1,4 @@
-const mongoose = require('../mockMongoose');
+const mongoose = require('../db');
 
 const farmerSchema = new mongoose.Schema({
   id: { type: String, required: true }, // Local ID like F001

@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('./mockMongoose');
+const mongoose = require('./db');
 const cors = require('cors');
 
 const app = express();
@@ -8,9 +8,16 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect('mock')
-  .then(() => console.log('Connected to Mock MongoDB (In-Memory)'))
-  .catch(err => console.error('MongoDB connection error:', err));
+const MONGO_URI = process.env.MONGO_URI;
+if (MONGO_URI) {
+  mongoose.connect(MONGO_URI)
+    .then(() => console.log('Connected to MongoDB Atlas (Production)'))
+    .catch(err => console.error('MongoDB Atlas connection error:', err));
+} else {
+  mongoose.connect('mock')
+    .then(() => console.log('Connected to Mock MongoDB (Local)'))
+    .catch(err => console.error('Mock MongoDB connection error:', err));
+}
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));

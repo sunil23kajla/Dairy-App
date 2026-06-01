@@ -1,4 +1,4 @@
-const mongoose = require('../mockMongoose');
+const mongoose = require('../db');
 
 const dairySchema = new mongoose.Schema({
   code: { type: String, required: true, unique: true },

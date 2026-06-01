@@ -707,6 +707,9 @@ class AppConstants {
     return key;
   }
 
+  // API Base URL - Change this when deploying to Render or using ngrok
+  static const String baseUrl = 'http://192.168.1.8:5000/api';
+
   static Future<void> shareToWhatsApp({
     required String mobile,
     required String message,

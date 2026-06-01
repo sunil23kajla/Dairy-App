@@ -1,4 +1,4 @@
-const mongoose = require('../mockMongoose');
+const mongoose = require('../db');
 
 const collectionSchema = new mongoose.Schema({
   localId: { type: String, required: true }, // UUID from local DB

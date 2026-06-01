@@ -2,13 +2,14 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'database_helper.dart';
+import 'constants.dart';
 
 class SyncManager {
   static final SyncManager instance = SyncManager._init();
   SyncManager._init();
 
   final Dio _dio = Dio(BaseOptions(
-    baseUrl: 'http://192.168.1.8:5000/api', // Mobile hotspot IP
+    baseUrl: AppConstants.baseUrl, // Base URL imported from constants
     connectTimeout: const Duration(seconds: 40),
   ));
 

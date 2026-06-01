@@ -78,7 +78,7 @@ class AuthState extends Equatable {
 
 class AuthCubit extends Cubit<AuthState> {
   final Dio _dio = Dio(BaseOptions(
-    baseUrl: 'http://192.168.1.8:5000/api', // Mobile hotspot IP
+    baseUrl: AppConstants.baseUrl, // Base URL imported from constants
     connectTimeout: const Duration(seconds: 40),
   ))..interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
 
