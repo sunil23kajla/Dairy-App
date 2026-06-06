@@ -1,3 +1,4 @@
+import 'package:dairy/core/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -80,6 +81,7 @@ class AuthCubit extends Cubit<AuthState> {
   final Dio _dio = Dio(BaseOptions(
     baseUrl: AppConstants.baseUrl, // Base URL imported from constants
     connectTimeout: const Duration(seconds: 40),
+    headers: {'Bypass-Tunnel-Reminder': 'true'}, // Required for localtunnel
   ))..interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
 
   AuthCubit() : super(const AuthState(isAuthenticated: false, isLoading: true, role: 'worker')) {

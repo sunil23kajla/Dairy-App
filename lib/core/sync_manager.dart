@@ -11,6 +11,7 @@ class SyncManager {
   final Dio _dio = Dio(BaseOptions(
     baseUrl: AppConstants.baseUrl, // Base URL imported from constants
     connectTimeout: const Duration(seconds: 40),
+    headers: {'Bypass-Tunnel-Reminder': 'true'}, // Required for localtunnel
   ));
 
   StreamSubscription<List<ConnectivityResult>>? _connectivitySubscription;
